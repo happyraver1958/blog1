@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Document</title>
+</head>
+<body>
+	<form id='testForm' action='' method='POST'>
+		<div>
+			<p>List of options</p>
+			<input type='radio' id='1' name='postsRadios' value='Test Item One'>
+			<label for='1'>Test Option One</label>
+			<input type='radio' id='2' name='postsRadios' value='Test Item Two'>
+			<label for='2'>Test Option Two</label>
+			<input type='radio' id='3' name='postsRadios' value='Test Item Three'>
+			<label for='3'>Test Option Three</label>
+		</div>
+		<div>
+			<p>Buttons</p>
+			<button type='button' id='newPost'>New</button>
+			<button type='button' id='editPost'>Edit</button>
+			<button type='button' id='deletePost'>Delete</button>
+		</div>
+	</form>
+	<div id='resultsDiv'></div>
+<script>
+	postsForm = document.getElementById('testForm');
+	document.getElementById('newPost').addEventListener('click', () => {
+		console.log('New button was pushed');
+		document.getElementById('resultsDiv').innerHTML='<h2>New button was pushed</h2>';
+	});
+</script>  
+</body>
+</html>

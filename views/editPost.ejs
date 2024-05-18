@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs'); %>
+ <section id='main-edit-section'>
+		<div class='container'>
+			<form id='editForm' action='/updatePost' method='post'>
+				<div class='mb-3'>
+					<label for='postTitle' class='form-label'>Post title:</label>
+					<input type='text' class='form-control' name='postTitle' id='postTitle' required>
+					<input type='text' name='id' id='importedId' hidden>
+				</div>
+				<div class='mb-3'>
+					<label for='postContent' class='form-label'>Update content:</label>
+					<textarea class='form-control' id='postContent' name='postContent' rows='7' required><%= blogToEdit['postContent'] %></textarea>
+				</div>
+				<div class='m-3'>
+					<button type='submit' class='mb-2 btn btn-primary'>Update my Post</button>
+				</div>
+			</form>
+		</div>
+	</section>
+	<script>
+		window.onload = () => {
+			document.getElementById('importedId').value = '<%= blogToEdit['id'] %>';
+			document.getElementById('postTitle').value = '<%= blogToEdit['postTitle'] %>';
+		};
+	</script>
+
+<%- include('partials/footer.ejs') %>
+

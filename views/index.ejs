@@ -1,0 +1,68 @@
+<%- include('partials/header.ejs'); %>
+<!-- Logo: Top-right corner -->
+<section id='top-header'>
+	<div class='container'>
+		<a href='#'><h1>Bloggy Blog</h1></a>
+	</div>
+</section>
+<!-- Title: Welcome! -->
+<section id='main-page-title'>
+	<div class='container text-center'>
+		<h2>Home</h2>
+		<h2>Welcome!</h2>
+	</div>
+</section>
+
+<section id='blog-content'>
+	<div class='container'>
+		<!-- Menu: Add, View/Edit, Delete -->
+		<div class='container-fluid'>
+			<form id='homePostsList' action='' method='post'>
+				<div class='row'>
+					<!-- Posts: List of posts with check boxes -->
+					<div class='col'>
+						<% if (locals.existingBlogs.length > 0) { %>
+						<%   for ( let i = 0; i < existingBlogs.length; i++ ) { %>
+									<input type='radio' id=<%= existingBlogs[i]['id'] %> name='postsRadios' value='<%= existingBlogs[i]['id'] %>'<%= i === 0 ? ' checked' : '' %>>
+									<label for=<%= existingBlogs[i]['id'] %>><%= existingBlogs[i]['postTitle'] %></label>
+									<br>
+						<%   } %>
+						<% } else { %>
+							<h3>No posts, create one.</h3>
+						<% } %>
+					</div>
+					<div class='col-3'>
+						<button type='button' id='newPost' class='mb-2 btn btn-primary'>New</button>
+						<button type='button' id='viewEditPost' class='mb-2 btn btn-success' <%= (locals.existingBlogs.length === 0) ? ` disabled` : `` %>>View/Edit</button>
+						<button type='button' id='deletePost' class='mb-2 btn btn-danger' <%= (locals.existingBlogs.length === 0) ? ` disabled` : `` %>>Delete</button>
+					</div>
+				</div>
+			</form>
+	</div>
+	
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+	window.onload = () => {
+		// Ensure the top post is selected
+		
+	}
+	const postsForm = document.forms['homePostsList'];
+	$('#newPost').on('click', () => {
+		postsForm.action = 'new';
+		postsForm.method = 'get';
+		postsForm.submit();
+	});
+	$('#viewEditPost').on('click', () => {
+		postsForm.action='viewEdit';
+		postsForm.method = 'post';
+		postsForm.submit();
+	});
+	$('#deletePost').on('click', () => {
+		postsForm.action='deletePost';
+		postsForm.method='post';
+		postsForm.submit();
+	});
+</script>
+
+<%- include('partials/footer.ejs'); %>

@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs'); %>
+<!-- Show the form -->
+<section id='post-input'>
+	<div class='container'>
+		<h1>New Post</h1>
+		<form action='/newPost', method='post'>
+			<div class='mb-3'>
+				<label for='postTitle' class='form-label'>Post title:</label>
+				<input type='text' class='form-control' name='postTitle' id='postTitle' required>
+			</div>
+			<div class='mb-3'>
+				<label for='postContent' class='form-label'>Enter content:</label>
+				<textarea class='form-control' id='postContent' name='postContent' rows='7' required></textarea>
+			</div>
+			<div class='m-3'>
+				<button type='submit' class='mb-2 btn btn-primary'>Submit my Post</button>
+			</div>
+		</form>
+	</div>
+</section>
+
+<%- include('partials/footer.ejs'); %>
